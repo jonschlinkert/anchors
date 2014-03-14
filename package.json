@@ -1,6 +1,6 @@
 {
   "name": "anchors",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Extract anchor tags from HTML and parse them into objects with useful information.",
   "homepage": "https://github.com/jonschlinkert/anchors",
   "author": {

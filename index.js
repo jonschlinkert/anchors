@@ -13,34 +13,29 @@ var cheerio = require('cheerio');
 var _ = require('lodash');
 
 
-module.exports = function(files) {
-  var anchors = [];
+module.exports = function(str) {
+  var anchors = [],
+    attrs = [];
 
-  files.map(function(filepath) {
-    var content = file.readFileSync(filepath);
-    var attrs = [];
+  // Use cheerio to extract valuse
+  var $ = cheerio.load(str);
 
-    // Use cheerio to extract valuse
-    var $ = cheerio.load(content);
-
-    // Build an object with useful info for each anchor
-    $('a').each(function(i, elem) {
-      attrs[i] = {
-        class: $(this).attr('class') || '',
-        title: $(this).attr('title') || '',
-        name: $(this).attr('name') || '',
-        alt: $(this).attr('alt') || '',
-        rel: $(this).attr('rel') || '',
-        href: url.parse($(this).attr('href'))
-      }
-    });
-
-    anchors.push({
-      // Store the path to each file
-      file: filepath,
-      data: attrs
-    });
+  // Build an object with useful info for each anchor
+  $('a').each(function(i, elem) {
+    attrs[i] = {
+      class: $(this).attr('class') || '',
+      title: $(this).attr('title') || '',
+      name: $(this).attr('name') || '',
+      alt: $(this).attr('alt') || '',
+      rel: $(this).attr('rel') || '',
+      href: url.parse($(this).attr('href'))
+    }
   });
 
-  return anchors;
+  // anchors.push({
+  //   // Store the path to each file
+  //   data: attrs
+  // });
+  file.writeJSONSync('attr.json', _.flatten(attrs));
+  return _.flatten(attrs);
 };
