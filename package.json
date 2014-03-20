@@ -1,6 +1,6 @@
 {
   "name": "anchors",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Extract anchor tags from HTML and parse them into objects with useful information.",
   "homepage": "https://github.com/jonschlinkert/anchors",
   "author": {
@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "lodash": "~2.4.1",
-    "fs-utils": "~0.3.6",
     "cheerio": "~0.13.1"
   },
   "keywords": [
@@ -38,5 +37,8 @@
     "parse",
     "extract",
     "link"
-  ]
+  ],
+  "devDependencies": {
+    "fs-utils": "~0.3.6"
+  }
 }

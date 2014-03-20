@@ -7,11 +7,8 @@
 
 
 var url = require('url');
-
-var file = require('fs-utils');
 var cheerio = require('cheerio');
 var _ = require('lodash');
-
 
 module.exports = function(str) {
   var anchors = [],
@@ -32,10 +29,5 @@ module.exports = function(str) {
     }
   });
 
-  // anchors.push({
-  //   // Store the path to each file
-  //   data: attrs
-  // });
-  file.writeJSONSync('attr.json', _.flatten(attrs));
   return _.flatten(attrs);
 };
